@@ -46,13 +46,10 @@
     const wrappedNJoined = document.getElementById('wrapped-n-joined');
 
     function wrapAndJoin() {
-        const sourceListValue = sourceList.value;
-        const sourceListSeparatorValue = sourceListSeparator.value;
-        const wrapWithBeforeValue = wrapWithBefore.value;
-        const wrapWithAfterValue = wrapWithAfter.value;
-        const joinWithValue = joinWith.value;
-        const wrappedNJoinedValue = sourceListValue.split(sourceListSeparatorValue).map(item => `${wrapWithBeforeValue}${item}${wrapWithAfterValue}`).join(joinWithValue);
-        wrappedNJoined.value = wrappedNJoinedValue;
+        wrappedNJoined.value = sourceList.value
+            .split(sourceListSeparator.value)
+            .map(item => `${wrapWithBefore.value}${item}${wrapWithAfter.value}`)
+            .join(joinWith.value);
     }
 
     sourceList.addEventListener('input', wrapAndJoin);
