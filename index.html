@@ -13,26 +13,55 @@
     <h1 class="text-center mb-4">Wrap'n'Join</h1>
     <div class="input-group mb-3">
         <span class="input-group-text w-25">Source list</span>
-        <textarea class="form-control" aria-label="Source list">Lorem ipsum dolor sit amet consectetur adipisicing elit</textarea>
+        <textarea class="form-control" aria-label="Source list"
+            id="source-list">Lorem ipsum dolor sit amet consectetur adipisicing elit</textarea>
     </div>
     <div class="input-group mb-3 w-50">
         <span class="input-group-text w-50">Separator</span>
-        <input type="text" class="form-control text-center" aria-label="Source list separator" value=" ">
+        <input type="text" class="form-control text-center" aria-label="Source list separator" value=" "
+            id="source-list-separator">
     </div>
     <div class="input-group mb-3 w-50">
         <span class="input-group-text w-50">Wrap with</span>
-        <input type="text" class="form-control text-center" aria-label="Wrap with before" value="{">
-        <input type="text" class="form-control text-center" aria-label="Wrap with after" value="}">
+        <input type="text" class="form-control text-center" aria-label="Wrap with before" value="{"
+            id="wrap-with-before">
+        <input type="text" class="form-control text-center" aria-label="Wrap with after" value="}" id="wrap-with-after">
     </div>
     </div>
     <div class="input-group mb-3 w-50">
         <span class="input-group-text w-50">Join with</span>
-        <input type="text" class="form-control text-center" aria-label="Join with" value=", ">
+        <input type="text" class="form-control text-center" aria-label="Join with" value=", " id="join-with">
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text w-25">Wrapped'n'Joined</span>
-        <textarea class="form-control" aria-label="Wrapped'n'Joined"></textarea>
+        <textarea class="form-control" aria-label="Wrapped'n'Joined" id="wrapped-n-joined"></textarea>
     </div>
 </body>
+<script>
+    const sourceList = document.getElementById('source-list');
+    const sourceListSeparator = document.getElementById('source-list-separator');
+    const wrapWithBefore = document.getElementById('wrap-with-before');
+    const wrapWithAfter = document.getElementById('wrap-with-after');
+    const joinWith = document.getElementById('join-with');
+    const wrappedNJoined = document.getElementById('wrapped-n-joined');
+
+    function wrapAndJoin() {
+        const sourceListValue = sourceList.value;
+        const sourceListSeparatorValue = sourceListSeparator.value;
+        const wrapWithBeforeValue = wrapWithBefore.value;
+        const wrapWithAfterValue = wrapWithAfter.value;
+        const joinWithValue = joinWith.value;
+        const wrappedNJoinedValue = sourceListValue.split(sourceListSeparatorValue).map(item => `${wrapWithBeforeValue}${item}${wrapWithAfterValue}`).join(joinWithValue);
+        wrappedNJoined.value = wrappedNJoinedValue;
+    }
+
+    sourceList.addEventListener('input', wrapAndJoin);
+    sourceListSeparator.addEventListener('input', wrapAndJoin);
+    wrapWithBefore.addEventListener('input', wrapAndJoin);
+    wrapWithAfter.addEventListener('input', wrapAndJoin);
+    joinWith.addEventListener('input', wrapAndJoin);
+
+    wrapAndJoin();
+</script>
 
 </html>
