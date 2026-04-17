@@ -13,7 +13,7 @@
     <h1 class="text-center mb-4">Wrap'n'Join</h1>
     <div class="input-group mb-3">
         <span class="input-group-text w-25">Source list</span>
-        <textarea class="form-control" aria-label="Source list" id="source-list">
+        <textarea class="form-control auto-resize" aria-label="Source list" id="source-list">
 Lorem
 ipsum
 dolor
@@ -25,26 +25,27 @@ elit</textarea>
     </div>
     <div class="input-group mb-3 w-50">
         <span class="input-group-text w-50">Separator</span>
-        <textarea rows="2" class="form-control text-center" aria-label="Source list separator"
+        <textarea rows="2" class="form-control text-center auto-resize" aria-label="Source list separator"
             id="source-list-separator">
 
 </textarea>
     </div>
     <div class="input-group mb-3 w-50">
         <span class="input-group-text w-50">Wrap with</span>
-        <textarea rows="1" class="form-control text-center" aria-label="Wrap with before"
+        <textarea rows="1" class="form-control text-center auto-resize" aria-label="Wrap with before"
             id="wrap-with-before">{</textarea>
-        <textarea rows="1" class="form-control text-center" aria-label="Wrap with after"
+        <textarea rows="1" class="form-control text-center auto-resize" aria-label="Wrap with after"
             id="wrap-with-after">}</textarea>
     </div>
     </div>
     <div class="input-group mb-3 w-50">
         <span class="input-group-text w-50">Join with</span>
-        <textarea rows="1" class="form-control text-center" aria-label="Join with" id="join-with">, </textarea>
+        <textarea rows="1" class="form-control text-center auto-resize" aria-label="Join with"
+            id="join-with">, </textarea>
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text w-25">Wrapped'n'Joined</span>
-        <textarea class="form-control" aria-label="Wrapped'n'Joined" id="wrapped-n-joined"></textarea>
+        <textarea class="form-control auto-resize" aria-label="Wrapped'n'Joined" id="wrapped-n-joined"></textarea>
     </div>
     <footer class="position-absolute bottom-0">
         <p><a href="https://github.com/SavelevGeo/wrapnjoin" target="_blank">Source code</a></p>
@@ -63,6 +64,7 @@ elit</textarea>
             .split(sourceListSeparator.value)
             .map(item => `${wrapWithBefore.value}${item}${wrapWithAfter.value}`)
             .join(joinWith.value);
+        resize(wrappedNJoined);
     }
 
     sourceList.addEventListener('input', wrapAndJoin);
@@ -72,6 +74,22 @@ elit</textarea>
     joinWith.addEventListener('input', wrapAndJoin);
 
     wrapAndJoin();
+
+    function resize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+
+    document.querySelectorAll('textarea.auto-resize').forEach(ta => {
+        ta.addEventListener('input', () => resize(ta));
+        resize(ta);
+    });
 </script>
+
+<style>
+    textarea {
+        overflow: hidden;
+    }
+</style>
 
 </html>
