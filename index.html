@@ -12,7 +12,7 @@
 <body class="container my-5">
     <h1 class="text-center mb-4">Wrap'n'Join</h1>
     <div class="input-group mb-3">
-        <span class="input-group-text w-25">Source list</span>
+        <span class="input-group-text w-25 wrap-text">Source list</span>
         <textarea class="form-control auto-resize" aria-label="Source list" id="source-list">
 Lorem
 ipsum
@@ -24,14 +24,14 @@ adipisicing
 elit</textarea>
     </div>
     <div class="input-group mb-3 w-50">
-        <span class="input-group-text w-50">Separator</span>
+        <span class="input-group-text w-50 wrap-text">Separator</span>
         <textarea rows="2" class="form-control text-center auto-resize" aria-label="Source list separator"
             id="source-list-separator">
 
 </textarea>
     </div>
     <div class="input-group mb-3 w-50">
-        <span class="input-group-text w-50">Wrap with</span>
+        <span class="input-group-text w-50 wrap-text">Wrap with</span>
         <textarea rows="1" class="form-control text-center auto-resize" aria-label="Wrap with before"
             id="wrap-with-before">{</textarea>
         <textarea rows="1" class="form-control text-center auto-resize" aria-label="Wrap with after"
@@ -39,12 +39,12 @@ elit</textarea>
     </div>
     </div>
     <div class="input-group mb-3 w-50">
-        <span class="input-group-text w-50">Join with</span>
+        <span class="input-group-text w-50 wrap-text">Join with</span>
         <textarea rows="1" class="form-control text-center auto-resize" aria-label="Join with"
             id="join-with">, </textarea>
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text w-25">Wrapped'n'Joined</span>
+        <span class="input-group-text w-25 wrap-text">Wrapped and Joined</span>
         <textarea class="form-control auto-resize" aria-label="Wrapped'n'Joined" id="wrapped-n-joined"></textarea>
     </div>
     <footer class="position-absolute bottom-0">
@@ -89,6 +89,10 @@ elit</textarea>
 <style>
     textarea {
         overflow: hidden;
+    }
+
+    .wrap-text {
+        white-space: normal;
     }
 </style>
 
